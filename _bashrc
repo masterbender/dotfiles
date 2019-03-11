@@ -1,0 +1,22 @@
+source ~/.git-prompt.sh
+
+# Git branch in prompt.
+PROMPT_COMMAND='__git_ps1 "$(tput setaf 76)\u$(tput setaf 15)@$(tput setaf 27)\h:$(tput setaf 15)\w" "\\\$ \n"'
+# linking bash completion
+# Add tab completion for bash completion 2
+if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+  source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion;
+fi;
+
+## aliases
+alias top="sudo htop" # alias top and fix high sierra bug
+alias cat='bat'
+alias pre="fzf --preview 'bat --color \"always\" {}'"
+alias ls='ls -Glah'
+
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+
+export LSCOLORS=Exfxcxdxbxegedabagacad
